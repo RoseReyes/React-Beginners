@@ -1,0 +1,51 @@
+<!-- INSERT BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <title>Let's React!</title>
+</head>
+<body>
+  <!-- DESIGNATED LOCATION TO INSERT REACT LOCATION-->
+  <div id="app">React has not yet rendered</div>
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+  // ASSIGNMENT - CHALLENGE
+    // RENDER A PARAGRAPH TAG WITH THE CONTENT "I AM A PARAGRAPH"
+      ReactDOM.render(
+        <p>I am a Paragraph</p>, 
+        document.getElementById("app")
+      );
+    // RENDER AN ANCHOR TAG THAT LINKS TO GOOGLE WITH THE CONTENT "VISIT GOOGLE"
+      ReactDOM.render(
+        <a href="www.google.com">Visit Google</a>, 
+        document.getElementById("app")
+      );
+    // RENDER AN UNORDERED LIST WITH THREE LIST ITEMS YOU NEED TO DO  TODAY
+      ReactDOM.render(
+          <ul>
+            <li>Hello React Training</li>
+            <li>Revise Workflow</li>
+            <li>Review Wireframe</li>
+          </ul>, 
+        document.getElementById("app")
+      );
+  //RENDER REACT TO THE DOM - WILL ACCEPT TWO ARGUMENTS (REACT WHAT, REACT WHERE)
+    ReactDOM.render(
+      // REACT WHAT - JSX
+      <h1>Hello World</h1>, 
+      // REACT WHERE - DIV WITH ID OF "APP"
+      document.getElementById("app")
+    ); 
+  </script>
+</body>
+</html>
