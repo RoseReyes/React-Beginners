@@ -1,2 +1,2 @@
 # React-Beginners
-Learning react for the first time in Udemy course.
+Learning React for the first time in Udemy course.
