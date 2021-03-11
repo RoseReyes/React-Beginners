@@ -20,7 +20,7 @@
   <script type="text/babel">
 
   // Friendly Complex Component
-  function Friendly(props) {
+  function FriendLy(props) {
     var friendlyStyle = {
       height: 300,
       width: 200,
@@ -108,11 +108,68 @@
   // component to child UserName component
   // Challenge2 - Use props to pass the image URL from the ReactDOM.render() method to parent FriendLy component 
   // to child Avatar component
+  // Challenge3 - Mass produce individual FriendLy cards by providing props and values in our ReactDOM.render() 
+  // method
+  // Challenge4 - Refactor code in ReactDOM.render() method where the values will be coming from a complex and nested object
+
+  var profiles = {
+    information:[
+      {name: 'Rob', img:'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' },
+      {name: 'Charles', img:'https://static.pexels.com/photos/38630/bodybuilder-weight-training-stress-38630.jpeg' },
+      {name: 'Alex', img:'https://static.pexels.com/photos/91227/pexels-photo-91227.jpeg' },
+      {name: 'Natalie', img:'https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg' },
+      {name: 'Jenny', img:'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' },
+      {name: 'Sarah', img:'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500g' },
+      {name: 'Josh', img:'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' },
+      {name: 'Kenny', img:'https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' },
+      {name: 'John', img:'https://static.pexels.com/photos/45882/man-crazy-funny-dude-45882.jpeg' },
+      {name: 'Alisha', img:'https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' },
+    ]
+  }
 
   ReactDOM.render(
-    <Friendly 
-    name='Rose'
-    img="https://media-exp1.licdn.com/dms/image/C5603AQFqR2zsZ3TZew/profile-displayphoto-shrink_100_100/0/1517239587270?e=1620864000&v=beta&t=NnTIY6Na8bJTdkVJ0y0CgbbKgLI24may5o1CmGueST0"/>,
+    <div>
+      <FriendLy
+        name={profiles.information[0].name}
+        img={profiles.information[0].img}
+        />
+        <FriendLy
+        name="Charles"
+        img="https://static.pexels.com/photos/38630/bodybuilder-weight-training-stress-38630.jpeg"
+        />
+        <FriendLy
+        name='Alex'
+        img="https://static.pexels.com/photos/91227/pexels-photo-91227.jpeg"
+        />
+        <FriendLy
+        name='Natalie'
+        img="https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg"
+        />
+        <FriendLy
+        name='Jenny'
+        img="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        />
+        <FriendLy
+        name='Sarah'
+        img="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500g"
+        />
+        <FriendLy
+        name='Josh'
+        img="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        />
+        <FriendLy
+        name='Kenny'
+        img="https://images.pexels.com/photos/2709388/pexels-photo-2709388.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        />
+        <FriendLy
+        name='John'
+        img="https://static.pexels.com/photos/45882/man-crazy-funny-dude-45882.jpeg"
+        />
+        <FriendLy
+        name='Alisha'
+        img="https://images.pexels.com/photos/1024311/pexels-photo-1024311.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        />
+    </div>,
     document.getElementById("app")
   );
   
