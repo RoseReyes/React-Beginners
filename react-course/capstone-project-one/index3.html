@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Friendly</title>
+</head>
+<body>
+  <div id="app">React has not rendered yet</div>
+
+  <script type="text/babel">
+  
+  // Challenge - Use map to pass props from person to the Friendly component
+  function Friendly(props) {
+    // declare a variable holding the array
+    var people = props.people;
+    // iterate through the array
+    // assigned transformed array to new variable
+    var peopleItem = people.map((person) => {
+      var friendlyStyle = {
+        height: 300,
+        width: 200,
+        padding: 0,
+        margin: 20,
+        background: "#FFF",
+        WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+        filter: "drop-shadow(0px 0px 5px #555)",
+        display: "inline-block"
+      };
+      // Return the exact same content but make sure JSX is rendering the right JavaScript object (person)
+      return <div style={friendlyStyle}>
+        <Avatar img={person.img}/>
+        <UserName name={person.name}/>
+        <GetConnected/>
+      </div>
+    });
+    return <div>{peopleItem}</div>
+  }
+
+  // Avatar Component
+  function Avatar(props) {
+    var avatarStyle ={
+      marginLeft: 27,
+      marginTop: 20,
+      width: 150,
+      height: 150,
+      borderRadius: "50%"
+    }
+    return(
+      <img src={props.img} alt="profile pic" style={avatarStyle}/>
+    );
+  }
+
+  // UserName Component
+  function UserName(props) {
+    var nameStyle ={
+      fontSize: 24,
+      fontFamily: "Arial, Helvetica, sans-serif",
+      textAlign: "center",
+      margin: 20
+    }
+    return(
+      <h1 style={nameStyle}>{props.name}</h1>
+    );
+  }
+  // GetConnected Complex Component
+  function GetConnected() {
+    var getConnectesStyle = {
+      marginLeft: 15
+    }
+    return(
+      <div style={getConnectesStyle}>
+        <Like/>
+        <Share/>
+        <Add/>
+      </div>
+    );
+  } 
+    var iconStyle = {
+      margin: 22
+    }
+
+    // Like Component
+    function Like() {
+      return(
+        <i className="fa fa-thumbs-o-up" aria-hidden="true" style={iconStyle}></i>
+      );
+    }
+    
+    // Share Component
+    function Share() {
+      return(
+        <i className="fa fa-share" aria-hidden="true" style={iconStyle}></i>
+      );
+    }
+    
+    // Add Component
+    function Add(){
+      return(
+        <i className="fa fa-users" aria-hidden="true" style={iconStyle}></i>
+      );
+    }
+    // Challenge - pass people array to the FriendLy component
+
+    var people = [{name: "Shari", img: "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg"},
+                  {name: "Charles", img:"https://static.pexels.com/photos/38630/bodybuilder-weight-training-stress-38630.jpeg"},
+                  {name: "Natalie", img: "https://static.pexels.com/photos/509195/pexels-photo-509195.jpeg"},
+                  {name: "Jenny", img: "https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg"},
+                  {name: "Sarah", img: "https://static.pexels.com/photos/324658/pexels-photo-324658.jpeg"},
+                  {name: "Josh", img: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"},
+                  {name: "Kenny", img: "https://images.pexels.com/photos/733500/pexels-photo-733500.jpeg"},
+                  {name: "John", img: "https://static.pexels.com/photos/45882/man-crazy-funny-dude-45882.jpeg"},
+                  {name: "Alisha", img: "https://static.pexels.com/photos/38554/girl-people-landscape-sun-38554.jpeg"}
+                  ];
+
+  ReactDOM.render(
+    <Friendly 
+      people={people}
+    />,
+    document.getElementById("app")
+  );
+  
+  </script>
+</body>
+</html>
