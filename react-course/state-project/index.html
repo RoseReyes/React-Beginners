@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- REACT LIBRARY -->
+  <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
+  <!-- REACT DOM LIBRARY -->
+  <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
+  <!-- BABEL LIBRARY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+  <title>React Events</title>
+</head>
+<body>
+  <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
+  <div id="app">React has not yet rendered</div>
+
+  <!-- JAVASCRIPT -->
+  <script type="text/babel">
+
+    // Create Class Component of DinnerVote
+    class DinnerVote extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          votes: 0
+        };
+      }
+      add() {
+        this.setState({
+          votes: this.state.votes + 1
+        })
+      }
+      subtract() {
+        this.setState({
+          votes: this.state.votes - 1
+        })
+      }
+      render() {
+        var dinnerVoteStyle = {
+          height: 500,
+          width: 300,
+          padding: 0,
+          margin: 20,
+          backgroundColor: "#FFF",
+          WebkitFilter: "drop-shadow(0px 0px 5px #555)",
+          filter: "drop-shadow(0px 0px 5px #555)",
+          display: "inline-block",
+          textAlign: "center"
+        }
+        var foodStyle = {
+          height: 200,
+          width: 200,
+          marginTop: 20
+        }
+        return(
+          <div style={dinnerVoteStyle}>
+            <img src={this.props.img} alt="food image" style={foodStyle}/>
+            <h1>Dinner Time</h1>
+            <p>Vote Here If You Want This</p>
+            <button onClick={() => this.add()}>+1</button>
+            <p>Vote Here If You Do Not Want This</p>
+            <button onClick={() => this.subtract()}>-1</button>
+            <p>Total: {this.state.votes}</p>
+          </div>
+        );
+      }
+    }
+    ReactDOM.render(
+      <div>
+        <DinnerVote img="https://images.pexels.com/photos/3662189/pexels-photo-3662189.jpeg"/>
+        <DinnerVote img="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg"/>
+        <DinnerVote img="https://images.pexels.com/photos/2323398/pexels-photo-2323398.jpeg"/>
+      </div>,
+      document.getElementById("app")
+    );
+  </script>
+
+
+</body>
+</html>

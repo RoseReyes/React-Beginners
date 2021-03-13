@@ -18,26 +18,30 @@
 
   <!-- JAVASCRIPT -->
 <script type="text/babel">
-  // Create Note Component
-  class Note extends React.Component{
-    handleButtonEdit() {
-      alert("this function will edit a note");
+  
+  // Create Warning Class Component
+  class Warnings extends React.Component{
+    handleButtonStove() {
+      alert("Ouch, F&#@$%^ that is hot!!!");
     }
-    handleButtonDelete() {
-      alert("this function will delete a note");
+    handleButtonSlurpee() {
+      alert("Brain Freeze!!! Duh!!!");
     }
     render() {
       return(
         <div>
-          <h1>Useless Note Taker</h1>
-          <button onClick={this.handleButtonEdit}>edit note</button>
-          <button onClick={this.handleButtonDelete}>delete note</button>
+          <h1>Life Warnings</h1>
+          <button onMouseOver={this.handleButtonStove}>Touch Stove</button>
+          <button onMouseOver={this.handleButtonSlurpee}>Drink Slurpee Really Fast</button>
         </div>
       );
     }
   }
+
+
+
   ReactDOM.render(
-    <Note/>,
+    <Warnings/>,
     document.getElementById("app")
   );
 </script>
