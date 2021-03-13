@@ -10,7 +10,7 @@
   <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
   <!-- BABEL LIBRARY -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
-  <title>React Forms</title>
+  <title>React Ajax Request</title>
 </head>
 <body>
   <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT  -->
@@ -18,39 +18,43 @@
 
   <!-- JAVASCRIPT -->
 <script type="text/babel">
-  // Create NameForm Component
-  class NameForm extends React.Component {
+  class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        value: ''
+        items: []
       };
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(event) {
-      this.setState({
-        value: event.target.value
+
+    // componentDidMount
+    // most common use case: starting AJAX to load data for your component
+    // can call setState
+    componentDidMount() {
+      fetch('http://swapi.co/api/people/')
+      .then(response => response.json())
+      .then(responseData => {
+        this.setState = ({
+          items: responseData.results
+        });
+      })
+      .catch(error => {
+        console.log('Fetching and Parsing data error', error);
       });
-    }
-    handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-    }
+    } 
     render() {
+      let items = this.state.items;
+      console.log(items);
       return(
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange}/>
-          </label>
-            <input type="submit" value="Submit"/>
-        </form>
+        <div>
+          {items.map((item) => {
+            return <h4 key={item.name}>{item.name} has an eye color of {item.eye_color}</h4>
+          })}
+        </div>
       );
     }
   }
   ReactDOM.render(
-    <NameForm/>,
+    <App/>,
     document.getElementById("app")
   );
 </script>
